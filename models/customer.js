@@ -1,5 +1,5 @@
 // DEPENDENCIES!
-//const { name } = require('ejs');
+
 
 const mongoose = require('mongoose');
 
@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 // });
 
 const customerSchema = new mongoose.Schema({
-    name: { type: String }, // Removed 'required'
+    name: { type: String }, 
     email: { 
         type: String, 
         validate: {
@@ -22,7 +22,7 @@ const customerSchema = new mongoose.Schema({
             message: props => `${props.value} is not a valid email!` // Custom error message for invalid email
         }
     },
-    address: { type: String }, // Removed 'required'
+    address: { type: String },
     phone: { 
         type: Number, 
         validate: {

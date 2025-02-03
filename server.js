@@ -17,8 +17,12 @@ mongoose.connection.on("connected", () => {
 app.use(express.urlencoded({ extended: false }));
 //console.log("connected to db");
 
+// app.get("/", async (req, res) => {
+//     res.send("welcome")
+// });
+
 app.get("/", async (req, res) => {
-    res.send("welcome")
+    res.render("home.ejs")
 });
 
 //GET CUSTOMER
