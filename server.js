@@ -25,6 +25,12 @@ app.get("/", async (req, res) => {
     res.render("home.ejs")
 });
 
+// NEW Customer ROUTE - Renders form for user to enter new customer data.
+app.get("/customers/new", (req, res) => {
+    res.render("customers/newCustomer.ejs");
+});
+
+
 //GET CUSTOMER
 app.get("/customers", async (req, res) => {
     const allCustomer = await customer.find();
