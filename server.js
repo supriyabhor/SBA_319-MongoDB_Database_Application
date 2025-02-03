@@ -6,6 +6,7 @@ const customer = require("./models/customer");
 require('dotenv').config();
 
 const store = require("./models/customer.js");
+const product = require("./models/product.js");
 
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -20,14 +21,23 @@ app.get("/", async (req, res) => {
     res.send("welcome")
 });
 
-//GET
+//GET CUSTOMER
 app.get("/customers", async (req, res) => {
     const allCustomer = await customer.find();
      console.log(allCustomer);
     res.send(allCustomer);
 });
 
-//POST
+//GET PRODUCT
+app.get("/products", async (req, res) => {
+    const allProduct = await product.find();
+     console.log(allProduct);
+    res.send(allProduct);
+});
+
+
+
+//POST CUSTOMER
 app.post("/customers", async (req, res) => {
     try {
         console.log("Received data:", req.body); // Log the incoming request data
@@ -75,6 +85,7 @@ app.patch("/customers/:id", async (req, res) => {
 app.delete("/customers/:id", async (req, res) => {
     try {
         console.log("Received data:", req.body); // Log the incoming request data
+
         const deletedCustomer = await customer.findByIdAndDelete(req.params.id);
         if (!deletedCustomer) {
             return res.status(404).send("Customer not found");
